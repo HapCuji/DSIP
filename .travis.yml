@@ -1,0 +1,25 @@
+language: python
+python:
+- '3.5'
+
+env:
+- DJANGO=1.11.2
+
+install:
+- pip install -q django==$DJANGO
+
+script:
+- cd hellosite
+- python manage.py test
+- cd ..
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API_KEY
+  app: $HEROKU_APP_NAME
+  on:
+    repo: HapCuji/DSIP
+    
+notifications:
+  email: false
