@@ -125,4 +125,4 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),   # for local apps
                     'static/',   # for general, if not found in local
                     )
-# STATIC_ROOT = "static/"
+STATIC_ROOT = "static/"
