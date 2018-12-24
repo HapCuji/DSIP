@@ -12,7 +12,7 @@ env:
 install:
 - pip install --upgrade pip
 - pip install -q django==$DJANGO
-- pip install -r requirements.txtзшз
+- pip install -r requirements.txt
 #- pip install -q Django==$DJANGO_VERSION
 
 script:
