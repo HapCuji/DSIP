@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Generate</title>
+{#        <!-- Bootstrap-->#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">#}
+{##}
+{#    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400" rel="stylesheet">#}
+
+{#    <!-- Custom styles -->#}
+{#    <link rel="stylesheet" href="{% static 'style.css' %}">#}
+
+
+</head>
+<body>
+    <p  class="right_class">Hello, you can insert your's contact data, but we don't save it =)</p>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="" method="post">
+        <label>Имя</label>
+        <input name="name" type="text" value="{{ form.name }}">
+
+        <label>Е-mail</label>
+        <input name="email" type="text" value="{{ form.email }}">
+
+        <label>Сообщение</label>
+        <textarea name="message">{{ form.message }}</textarea>
+
+        <input type="submit" value="Отправить">
+        {% csrf_token %}
+    </form>
+    <br>
+    <div id="test_animation_id">
+        <a href="../feedback"> Запустить генератор слов -> </a>
+    </div>
+    <br>
+    <br>
+</body>
+</html>
