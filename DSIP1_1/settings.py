@@ -25,8 +25,8 @@ SECRET_KEY = 'y1*wa&_st5y$fg%y%r_qn4b#$ncm!rsh2ld)1hm@1t3_3*r!+u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['polar-depths-84680.herokuapp.com']
 
 # Application definition
 
