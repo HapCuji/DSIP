@@ -8,10 +8,7 @@ env:
 
 install:
 - "pip install --upgrade pip"
-- "pip install -e . --upgrade --upgrade-strategy=only-if-needed"
-- "pipenv install --dev"
-- 'pipenv install --system --dev'
-- pip install -q django==$DJANGO
+- pip install -q django==$DJANGOpip install --upgrade pip
 #- pip install -q Django==$DJANGO_VERSION
 
 script:
