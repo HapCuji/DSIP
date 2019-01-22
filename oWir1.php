@@ -39,12 +39,12 @@ if (isset($_SESSION['user_id'])) {
 		
 		if ( $group_user_id == 1) { // $_SESSION['group_id'] = 1 //<p><a href="key/cryptreload.php">Узнать пароль</a></p>
 			echo <<<EOD
-			<p><a href="show_user4.php">Управление пользователями</a></p>	
+			<p><a href="_user/show_user4.php">Управление пользователями</a></p>	
 EOD;
 		}
 		echo <<<EOD
 		<p><a href='signout4.php'>Exit my</a></p>
-		<p><a href="infouser4.php">Личный кабинет {$nickname}</a></p>
+		<p><a href="infouser4.php">Личный кабинет {$nickname} </a></p>
 		<p><a href="fpdf1.php">Отчет PDF</a></p>
 EOD;
 		
