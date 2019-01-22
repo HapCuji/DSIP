@@ -18,7 +18,7 @@ def test_sample_multiple_words():
     l = ('foo', 'bar', 'foobar')
     words = sample(l, 2)
     assert len(words) == 2
-    assert words[0] not in l
+    assert words[0] in l
     assert words[1] in l
     assert words[0] is not words[1]
 
