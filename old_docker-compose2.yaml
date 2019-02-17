@@ -1,0 +1,42 @@
+version: '3'
+# Список наших сервисов (контейнеров)
+services:
+#
+    nginx:
+        image: nginx:latest
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./hosts:/etc/nginx/conf.d
+            - ./www:/var/www
+            - ./logs:/var/log/nginx
+        links:
+            - php
+        depends_on:
+          - php
+#
+    php:
+        build: ./images/php
+        links:
+            - mysql
+        volumes:
+            - ./www:/var/www
+        depends_on:
+          - mysql
+        ports:
+          - "8100:80"
+        stdin_open: true
+        tty: true          
+#
+    mysql:
+        image: mysql:8
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: test_db
+            MYSQL_USER: devuser
+            MYSQL_PASSWORD: devpass

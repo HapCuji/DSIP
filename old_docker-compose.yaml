@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+#  
+  apache:
+    image: httpd:2.4
+    volumes:
+      - ./www/agregator_ser/:/var/www/agregator_ser
+      - ./host/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    depends_on:
+      - php
+#  
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 80:80
+    volumes:
+      - ./www/agregator_ser/:/var/www/agregator_ser
+      - ./host/nginx.conf:/etc/host/nginx.conf
+    depends_on:
+      - apache
+#  
+  php:
+    container_name: php
+    build:
+      .images/php
+    volumes:
+      - ./www/agregator_ser/:/var/www/agregator_ser
+      - ./images/php/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mysql_db    
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true
+#  
+  mysql_db:
+    image: mysql_db:8
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    ports:
+      - "9906:3306"
+#  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links: 
+      - mysql_db:db
+    ports:
+      - 8765:80
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+    depends_on:
+      - mysql_db
